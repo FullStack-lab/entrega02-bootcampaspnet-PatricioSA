@@ -36,5 +36,20 @@ namespace Forun.Controllers
             var mainComments = _comments.Where(c => c.ParentId == null).ToList();
             return View(mainComments);
         }
+
+        [HttpGet]
+        public ActionResult CreateComment(int? parentId)
+        {
+            ViewBag.ParentId = parentId;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateComment(Comment comment)
+        {
+            comment.Id = _comments.Count > 0 ? _comments.Max(c => c.Id) + 1 : 1;
+            _comments.Add(comment);
+            return RedirectToAction("Index");
+        }
     }
 }

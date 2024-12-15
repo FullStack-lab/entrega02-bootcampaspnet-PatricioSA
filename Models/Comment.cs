@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Forun.Models
 {
     public class Comment
     {
         public int Id { get; set; }
+
+        [Display(Name = "Mensagem")]
         public string Content { get; set; }
+
+        [Display(Name = "Nome")]
         public string Author { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 

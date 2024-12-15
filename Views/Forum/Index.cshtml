@@ -14,13 +14,15 @@
         <h1>Comentários</h1>
 
         @foreach (var comment in Model)
-            {
-                <div>
-                    <h3>@comment.Author</h3>
-                    <p>@comment.Content</p>
-                    <p><small>@comment.CreatedAt</small></p>
-                </div>
-            }
+        {
+            <div>
+                <h3>@comment.Author</h3>
+                <p>@comment.Content</p>
+                <p><small>@comment.CreatedAt</small></p>
+            </div>
+        }
+
+        @Html.ActionLink("Criar comentário", "CreateComment")
     </div>
 </body>
 </html>
