@@ -14,7 +14,7 @@
         @foreach (var comment in Model)
         {
 
-            <a href="@Url.Action("CommentDetails", "Forum", new { id = comment.Id })" style="text-decoration: none; color: inherit;">
+            <a href="@Url.Action("CommentDetails", "Forum", new { id = comment.Id, author = comment.Author })" style="text-decoration: none; color: inherit;">
                 <div class="border p-2 mb-4 rounded-2">
                     <h3>@comment.Author</h3>
                     <p>@comment.Content</p>

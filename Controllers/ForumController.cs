@@ -109,7 +109,7 @@ namespace Forun.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult CommentDetails(int id)
+        public ActionResult CommentDetails(int id, string author = null)
         {
             var comment = _comments.FirstOrDefault(c => c.Id == id);
             if (comment == null) return HttpNotFound();
