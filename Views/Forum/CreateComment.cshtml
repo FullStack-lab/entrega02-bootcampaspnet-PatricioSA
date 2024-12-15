@@ -8,21 +8,24 @@
     <title></title>
 </head>
 <body>
-    <div>
-        @using (Html.BeginForm())
-        {
-            <div>
-                @Html.LabelFor(model => model.Author)
-                @Html.TextBoxFor(model => model.Author)
-            </div>
+    <h1>Adicionar Comentário</h1>
+    <section class="w-100 d-flex justify-content-center">
+        <div style="width: 500px">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "w-100" }))
+            {
+                <div>
+                    @Html.LabelFor(model => model.Author)
+                    @Html.TextBoxFor(model => model.Author, new { @class = "form-control" })
+                </div>
 
-            <div>
-                @Html.LabelFor(model => model.Content)
-                @Html.TextAreaFor(model => model.Content, new {@maxlength = 500})
-            </div>
+                <div>
+                    @Html.LabelFor(model => model.Content)
+                    @Html.TextAreaFor(model => model.Content, new { @maxlength = 500, @class = "form-control w-100" })
+                </div>
 
-            <button type="submit">Salvar</button>
-        }
-    </div>
+                <button type="submit" class="btn btn-dark mt-2">Salvar</button>
+            }
+        </div>
+    </section>
 </body>
 </html>

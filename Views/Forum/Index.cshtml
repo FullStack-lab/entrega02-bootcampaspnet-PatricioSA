@@ -9,27 +9,26 @@
 </head>
 <body>
     <div>
-        <h1>Comentários</h1>
+        <h1 class="fw-bold">Comentários</h1>
+        @Html.ActionLink("Adicionar novo comentário", "CreateComment", null, new { @class = "btn bg-dark text-white mb-2" })
 
         @foreach (var comment in Model)
         {
 
             <a href="@Url.Action("CommentDetails", "Forum", new { id = comment.Id, author = comment.Author })" style="text-decoration: none; color: inherit;">
-                <div class="border p-2 mb-4 rounded-2">
+                <div class="border p-2 mb-4 rounded-2 position-relative">
                     <h3>@comment.Author</h3>
                     <p>@comment.Content</p>
                     <p><small>@comment.CreatedAt</small></p>
                     <p>@comment.Replies.Count() Respostas</p>
 
-                    @Html.ActionLink("Responder comentário", "CreateComment", new { parentId = comment.Id })
-                    @Html.ActionLink("Editar", "EditComment", new { id = comment.Id })
-                    @Html.ActionLink("Excluir", "DeleteComment", new { id = comment.Id })
-                    @Html.ActionLink("Ver detalhes", "CommentDetails", new { id = comment.Id })
+                    @Html.ActionLink("Responder", "CreateComment", new { parentId = comment.Id }, new { @class = "btn border text-dark btn-outline-light" })
+                    @Html.ActionLink("Editar", "EditComment", new { id = comment.Id }, new { @class = "btn border text-dark btn-outline-light" })
+                    @Html.ActionLink("Excluir", "DeleteComment", new { id = comment.Id }, new { @class = "btn border text-dark btn-outline-light" })
+                    @Html.ActionLink("Ver detalhes", "CommentDetails", new { id = comment.Id }, new { @class = "btn border text-dark btn-outline-light" })
                 </div>
             </a>
         }
-
-        @Html.ActionLink("Criar comentário", "CreateComment")
     </div>
 </body>
 </html>

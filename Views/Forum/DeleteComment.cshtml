@@ -8,14 +8,14 @@
     <title></title>
 </head>
 <body>
-    <div>
+    <div class="alignite">
         <h1>Excluir Comentário</h1>
         <p>Você tem certeza que deseja excluir este comentário?</p>
 
         @using (Html.BeginForm())
         {
-            <button type="submit">Confirmar</button>
-            @Html.ActionLink("Cancelar", "Index")
+             <button type="submit" class="btn btn-dark p-2">Confirmar</button>
+             @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn border text-dark btn-outline-light p-2" })
         }
     </div>
 </body>
