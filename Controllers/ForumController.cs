@@ -18,7 +18,16 @@ namespace Forun.Controllers
                 Content = "Este é o primeiro comentário.",
                 Author = "Usuário1",
                 CreatedAt = DateTime.Now,
-                Replies = new List<Comment>()
+                Replies = new List<Comment>
+                {
+            new Comment
+            {
+                Id = 2,
+                Content = "Esta é uma resposta ao primeiro comentário.",
+                Author = "Usuário2",
+                CreatedAt = DateTime.Now
+            }
+        }
             },
             new Comment
             {
@@ -37,7 +46,6 @@ namespace Forun.Controllers
             return View(mainComments);
         }
 
-        [HttpGet]
         public ActionResult CreateComment(int? parentId)
         {
             ViewBag.ParentId = parentId;
@@ -48,7 +56,38 @@ namespace Forun.Controllers
         public ActionResult CreateComment(Comment comment)
         {
             comment.Id = _comments.Count > 0 ? _comments.Max(c => c.Id) + 1 : 1;
-            _comments.Add(comment);
+
+            if (comment.ParentId.HasValue)
+            {
+                // Encontrar o comentário pai na lista de comentários
+                var parentComment = _comments.FirstOrDefault(c => c.Id == comment.ParentId.Value);
+
+                parentComment?.Replies.Add(comment);
+            }
+            else
+            {
+                // Se não tiver ParentId, é um comentário principal
+                _comments.Add(comment);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult EditComment(int id)
+        {
+            var comment = _comments.FirstOrDefault(c => c.Id == id);
+            if (comment == null) return HttpNotFound();
+
+            return View(comment);
+        }
+
+        [HttpPost]
+        public ActionResult EditComment(Comment updatedComment)
+        {
+            var comment = _comments.FirstOrDefault(c => c.Id == updatedComment.Id);
+            if (comment == null) return HttpNotFound();
+
+            comment.Content = updatedComment.Content;
             return RedirectToAction("Index");
         }
     }

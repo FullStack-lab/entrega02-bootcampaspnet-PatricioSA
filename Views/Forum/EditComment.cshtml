@@ -9,19 +9,16 @@
 </head>
 <body>
     <div>
+        <h1>Editar Comentário</h1>
+
         @using (Html.BeginForm())
         {
             <div>
-                @Html.LabelFor(model => model.Author)
-                @Html.TextBoxFor(model => model.Author)
-            </div>
-
-            <div>
                 @Html.LabelFor(model => model.Content)
-                @Html.TextAreaFor(model => model.Content, new {@maxlength = 500})
+                @Html.TextAreaFor(model => model.Content)
             </div>
 
-            <button type="submit">Salvar</button>
+            <button type="submit">Salvar Alterações</button>
         }
     </div>
 </body>

@@ -1,7 +1,5 @@
 ﻿@model List<Forun.Models.Comment>
 
-
-
 <!DOCTYPE html>
 
 <html>
@@ -20,6 +18,18 @@
                 <p>@comment.Content</p>
                 <p><small>@comment.CreatedAt</small></p>
             </div>
+
+            @Html.ActionLink("Responder comentário", "CreateComment", new { parentId = comment.Id })
+            @Html.ActionLink("Editar comentário", "EditComment", new { id = comment.Id })
+
+            <ul>
+                @foreach (var reply in comment.Replies)
+                {
+                    <li>
+                        <strong>@reply.Author:</strong> @reply.Content
+                    </li>
+                }
+            </ul>
         }
 
         @Html.ActionLink("Criar comentário", "CreateComment")
