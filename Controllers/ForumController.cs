@@ -90,5 +90,23 @@ namespace Forun.Controllers
             comment.Content = updatedComment.Content;
             return RedirectToAction("Index");
         }
+
+        public ActionResult DeleteComment(int id)
+        {
+            var comment = _comments.FirstOrDefault(c => c.Id == id);
+
+            return View(comment);
+        }
+
+        [HttpPost, ActionName("DeleteComment")]
+        public ActionResult ConfirmDelete(int id)
+        {
+            var comment = _comments.FirstOrDefault(c => c.Id == id);
+            if (comment != null)
+            {
+                _comments.Remove(comment);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

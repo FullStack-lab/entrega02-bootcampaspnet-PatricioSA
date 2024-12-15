@@ -20,7 +20,8 @@
             </div>
 
             @Html.ActionLink("Responder comentário", "CreateComment", new { parentId = comment.Id })
-            @Html.ActionLink("Editar comentário", "EditComment", new { id = comment.Id })
+            @Html.ActionLink("Editar", "EditComment", new { id = comment.Id })
+            @Html.ActionLink("Excluir", "DeleteComment", new { id = comment.Id })
 
             <ul>
                 @foreach (var reply in comment.Replies)
