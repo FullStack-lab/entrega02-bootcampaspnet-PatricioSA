@@ -183,6 +183,7 @@
     <Content Include="Views\Forum\CreateComment.cshtml" />
     <Content Include="Views\Forum\EditComment.cshtml" />
     <Content Include="Views\Forum\DeleteComment.cshtml" />
+    <Content Include="Views\Forum\CommentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

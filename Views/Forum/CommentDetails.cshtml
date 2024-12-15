@@ -1,0 +1,30 @@
+﻿@model Forun.Models.Comment
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h1>Detalhes do Comentário</h1>
+
+        <h3>@Model.Author</h3>
+        <p>@Model.Content</p>
+        <p><small>@Model.CreatedAt</small></p>
+
+        <h4>Respostas:</h4>
+        
+            <ul>
+                @foreach (var reply in Model.Replies)
+                {
+                    <li>
+                        <strong>@reply.Author:</strong> @reply.Content
+                    </li>
+                }
+            </ul>
+    </div>
+</body>
+</html>

@@ -13,24 +13,19 @@
 
         @foreach (var comment in Model)
         {
-            <div>
-                <h3>@comment.Author</h3>
-                <p>@comment.Content</p>
-                <p><small>@comment.CreatedAt</small></p>
-            </div>
 
-            @Html.ActionLink("Responder comentário", "CreateComment", new { parentId = comment.Id })
-            @Html.ActionLink("Editar", "EditComment", new { id = comment.Id })
-            @Html.ActionLink("Excluir", "DeleteComment", new { id = comment.Id })
+            <a href="@Url.Action("CommentDetails", "Forum", new { id = comment.Id })" style="text-decoration: none; color: inherit;">
+                <div class="border p-2 mb-4 rounded-2">
+                    <h3>@comment.Author</h3>
+                    <p>@comment.Content</p>
+                    <p><small>@comment.CreatedAt</small></p>
 
-            <ul>
-                @foreach (var reply in comment.Replies)
-                {
-                    <li>
-                        <strong>@reply.Author:</strong> @reply.Content
-                    </li>
-                }
-            </ul>
+                    @Html.ActionLink("Responder comentário", "CreateComment", new { parentId = comment.Id })
+                    @Html.ActionLink("Editar", "EditComment", new { id = comment.Id })
+                    @Html.ActionLink("Excluir", "DeleteComment", new { id = comment.Id })
+                    @Html.ActionLink("Ver detalhes", "CommentDetails", new { id = comment.Id })
+                </div>
+            </a>
         }
 
         @Html.ActionLink("Criar comentário", "CreateComment")

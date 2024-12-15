@@ -108,5 +108,13 @@ namespace Forun.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult CommentDetails(int id)
+        {
+            var comment = _comments.FirstOrDefault(c => c.Id == id);
+            if (comment == null) return HttpNotFound();
+
+            return View(comment);
+        }
     }
 }
