@@ -19,6 +19,7 @@
                     <h3>@comment.Author</h3>
                     <p>@comment.Content</p>
                     <p><small>@comment.CreatedAt</small></p>
+                    <p>@comment.Replies.Count() Respostas</p>
 
                     @Html.ActionLink("Responder comentário", "CreateComment", new { parentId = comment.Id })
                     @Html.ActionLink("Editar", "EditComment", new { id = comment.Id })
