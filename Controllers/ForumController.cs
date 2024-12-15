@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Forun.Controllers
@@ -15,25 +14,28 @@ namespace Forun.Controllers
             new Comment
             {
                 Id = 1,
-                Content = "Este é o primeiro comentário.",
-                Author = "Usuário1",
+                Content = "Confira meu novo software para controle de férias dos funcionários",
+                Author = "Patrício",
                 CreatedAt = DateTime.Now,
                 Replies = new List<Comment>
                 {
-            new Comment
-            {
-                Id = 2,
-                Content = "Esta é uma resposta ao primeiro comentário.",
-                Author = "Usuário2",
-                CreatedAt = DateTime.Now
-            }
-        }
+                    new Comment
+                    {
+                        Id = 2,
+                        Content = "Eu gostei da forma como você estruturou os componentes do sistema de " +
+                        "controle de férias, mas acho que seria interessante adicionar uma funcionalidade" +
+                        "notificação para lembrar os usuários sobre o prazo das férias solicitadas.",
+                        Author = "João Silva",
+                        CreatedAt = DateTime.Now
+                    }
+                }
             },
             new Comment
             {
                 Id = 3,
-                Content = "Este é o segundo comentário.",
-                Author = "Usuário3",
+                Content = "Já experimentaram fazer trilhas em montanhas? Recentemente fiz uma trilha no " +
+                "Pico da Bandeira e foi uma experiência incrível! O contato com a natureza renova as energias.",
+                Author = "Ana Costa",
                 CreatedAt = DateTime.Now,
                 Replies = new List<Comment>()
             }
