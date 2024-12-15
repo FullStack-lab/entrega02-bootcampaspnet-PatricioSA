@@ -1,0 +1,26 @@
+﻿@model List<Forun.Models.Comment>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h1>Comentários</h1>
+
+        @foreach (var comment in Model)
+            {
+                <div>
+                    <h3>@comment.Author</h3>
+                    <p>@comment.Content</p>
+                    <p><small>@comment.CreatedAt</small></p>
+                </div>
+            }
+    </div>
+</body>
+</html>
